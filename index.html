@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zadanie testowe</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            body
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+#conteiner
+{
+    margin: 0px auto;
+    
+}
+#conteiner h1
+{
+    margin-left: 50px;
+    font-size: 36px;
+    font-weight: 400;
+}
+form
+{
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border: 1px solid grey;
+    height: 120px;
+    width: 500px
+}
+
+.pytanie, .typ, .condition
+{
+    margin: 10px 0px 5px 10px;
+    width: 70px;
+    display: inline-block;
+}
+.inputy
+{
+    margin-right: 10px;
+    width: 401px;
+    display: inline-block;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 5px;
+}
+.inputy2
+{
+    margin-right: 10px;
+    width: 410px;
+    display: inline-block;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 5px;
+}
+.usun, .dodaj
+{
+    float: right;
+    margin: 15px 10px 10px 0px;
+    width: 100px;
+}
+#przycisk input
+{
+    margin-left: 50px;
+    margin-bottom: 30px;
+    width: 120px;
+    height: 30px;
+}
+
+
+.inputy3
+{
+   
+    margin-right: 10px;
+    width: 230px;
+    display: inline-block;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 5px; 
+}
+.inputy4
+{
+   
+    margin-right: 10px;
+    width: 170px;
+    display: inline-block;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 5px; 
+}
+input[type=button]
+{
+        background-color: #efefef;
+	color: black;
+	border: 2px solid #ddd;
+	font-size: 12px;
+	padding: 5px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+            
+            
+        </style>        
+        
+    </head>
+    <body>
+        <div id="conteiner">
+            <h1>Form Builder</h1>
+            <div id="formularze">
+
+            </div>
+            
+            <!-- Koniec div formularze -->
+            <div id="przycisk">
+                    <input type="button" value="Add Input" onclick="dodaj_formularz('formularze');" />
+
+            </div>
+        <!-- Koniec div cointeiner -->
+        </div>
+        <script>
+            
+            
+var zForm = 0;
+
+function dodaj_formularz(kontener)
+{
+        
+        var formularz = document.createElement('div');
+        formularz.id = "formularz"+ zForm;
+        
+        
+	var form = document.createElement('form');
+        form.id = "form"+ zForm;
+        var pytanie = document.createElement('p');
+        pytanie.innerHTML = "Question";
+        pytanie.className = 'pytanie';
+        
+        var inputy = document.createElement('input');
+        
+        inputy.setAttribute('type', 'text');
+	inputy.setAttribute('name', 'text');
+        inputy.setAttribute('value', 'text');
+        inputy.className = 'inputy';
+        
+        var typ = document.createElement('p');
+        typ.innerHTML = "Type";
+        typ.className = 'typ';
+        
+        var inputy2 = document.createElement('select');
+        
+        inputy2.setAttribute('type', 'select');
+	inputy2.setAttribute('name', 'text2');
+        inputy2.setAttribute('value', 'text2');
+        inputy2.className = 'inputy2';
+        
+        var opcja1 = document.createElement('option');
+        opcja1.setAttribute('value', 'text2');
+        opcja1.innerHTML = "Yes / No";
+        
+        var opcja2 = document.createElement('option');
+        opcja2.setAttribute('value', 'text2');
+        opcja2.innerHTML = "Text";
+        
+        var opcja3 = document.createElement('option');
+        opcja3.setAttribute('value', 'text2');
+        opcja3.innerHTML = "Number";
+        
+        var dodaj = document.createElement('input');
+        
+	dodaj.setAttribute('type', 'button');
+        dodaj.setAttribute('value', 'Add Sub-Input');
+        dodaj.setAttribute('onclick', 'nowy_pod_formularz("formularz'+ zForm +'")');
+        dodaj.className = 'dodaj';
+
+            
+        
+        var usun = document.createElement('input');
+        
+	usun.setAttribute('type', 'button');
+        usun.setAttribute('value', 'Delete');
+        usun.setAttribute('onclick', 'usun_formularz()');
+        usun.className = 'usun';
+        
+       
+        
+	var kontener = document.getElementById(kontener);
+	kontener.appendChild(formularz);
+        
+        formularz.appendChild(form);
+        
+        form.appendChild(pytanie);
+        
+        form.appendChild(inputy);
+        
+        form.appendChild(typ);
+        
+        form.appendChild(inputy2);
+            inputy2.appendChild(opcja1);
+            inputy2.appendChild(opcja2);
+            inputy2.appendChild(opcja3);
+        
+        form.appendChild(usun);
+        form.appendChild(dodaj);
+               
+        zForm++;
+}
+
+function nowy_pod_formularz(kontener)
+{
+       
+        var podformularz = document.createElement('div');
+        podformularz.id = "podformularz"+ zForm;
+        podformularz.className = "podformularze";
+        podformularz.style.marginLeft += "50px";
+        
+        
+	var form = document.createElement('form');
+        form.id = "form"+ zForm;
+        form.style.height = "155px";
+        
+        var pytanie = document.createElement('p');
+        pytanie.innerHTML = "Question";
+        pytanie.className = 'pytanie';
+        
+        var inputy = document.createElement('input');
+        
+        inputy.setAttribute('type', 'text');
+	inputy.setAttribute('name', 'text');
+        inputy.setAttribute('value', 'text');
+        inputy.className = 'inputy';
+        
+        var typ = document.createElement('p');
+        typ.innerHTML = "Type";
+        typ.className = 'typ';
+        
+        var condition =document.createElement('p');
+        condition.innerHTML = "Condition";
+        condition.className = 'condition';
+        
+        var inputy2 = document.createElement('select');
+        
+        inputy2.setAttribute('type', 'select');
+	inputy2.setAttribute('name', 'text2');
+        inputy2.setAttribute('value', 'text2');
+        inputy2.className = 'inputy2';
+        
+        var inputy3 = document.createElement('select');
+        
+        inputy3.setAttribute('type', 'select');
+	inputy3.setAttribute('name', 'text3');
+        inputy3.setAttribute('value', 'text3');
+        inputy3.className = 'inputy3';
+        
+        var inputy4 = document.createElement('select');
+        
+        inputy4.setAttribute('type', 'select');
+	inputy4.setAttribute('name', 'text2');
+        inputy4.setAttribute('value', 'text2');
+        inputy4.className = 'inputy4';
+        
+        var opcja1 = document.createElement('option');
+        opcja1.setAttribute('value', 'text2');
+        opcja1.innerHTML = "Yes / No";
+        
+        var opcja2 = document.createElement('option');
+        opcja2.setAttribute('value', 'text2');
+        opcja2.innerHTML = "Text";
+        
+        var opcja3 = document.createElement('option');
+        opcja3.setAttribute('value', 'text2');
+        opcja3.innerHTML = "Number";
+        
+        var dodaj = document.createElement('input');
+        
+	dodaj.setAttribute('type', 'button');
+        dodaj.setAttribute('value', 'Add Sub-Input');
+        dodaj.setAttribute('onclick', 'nowy_pod_formularz("podformularz'+ zForm +'")');
+        dodaj.className = 'dodaj';
+
+            
+        
+        var usun = document.createElement('input');
+        
+	usun.setAttribute('type', 'button');
+        usun.setAttribute('value', 'Delete');
+        usun.setAttribute('onclick', 'usun_formularz()');
+        usun.className = 'usun';
+        
+       
+        
+	var kontener = document.getElementById(kontener);
+	kontener.appendChild(podformularz);
+        
+        podformularz.appendChild(form);
+        
+        form.appendChild(condition);
+        
+        form.appendChild(inputy3);
+        form.appendChild(inputy4);
+        
+        form.appendChild(pytanie);
+        
+        form.appendChild(inputy);
+        
+        form.appendChild(typ);
+        
+        form.appendChild(inputy2);
+            inputy2.appendChild(opcja1);
+            inputy2.appendChild(opcja2);
+            inputy2.appendChild(opcja3);
+        
+        form.appendChild(usun);
+        form.appendChild(dodaj);
+               
+        zForm++;
+          
+}   
+
+function usun_formularz()
+{
+    var form = document.querySelector('form');
+    var formularz = document.querySelector("div.formularz");
+    var podformularz = document.querySelector("podformularz");
+   
+    
+    form.parentNode.remove(form);
+    formularz.parentNode.remove(formularz);
+    podformularz.parentNode.remove(podformularz);
+    
+    
+    
+}
+
+
+            
+        </script>
+    </body>
+</html>
